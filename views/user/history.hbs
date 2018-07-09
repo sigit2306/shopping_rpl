@@ -1,0 +1,33 @@
+<div class="row">
+	<div class="col">
+		<h1 class="text-center text-muted">Sejarah Pembelian</h1>
+		<hr>
+		{{# if orders }}
+			<h2 class="text-monospace">Pesanan Anda</h2>
+			{{# each orders }}
+				<div class="card border-success mb-3" style="max-width: 40rem;">
+					<div class="card-header bg-transparent border-success">Kode Pembayaran: {{ this.paymentId}} &nbsp; <a href="/user/complaint" class="btn btn-primary">Buat Pengaduan</a> </div>
+					<div class="card-body text-success">
+					    <h5 class="card-title">Penerima: {{this.name}}</h5>
+					    <div class="card-text">
+					    	<ul class="list-group">
+					    		{{# each this.items }}
+						    		<li class="list-group-item d-flex justify-content-between align-items-center">
+						    			{{ this.item.title }} | {{ this.qty }} Paket
+						    			<span class="badge badge-primary badge-pill">
+							    			{{{foo this.price }}}
+							    		</span>
+						    		</li>
+					    		{{/each}}
+					    	</ul>
+					    </div>
+					</div>
+					<div class="card-footer bg-transparent border-success"><strong>Total dibayar Rp. {{{foo this.cart.totalPrice}}}</strong></div>
+				</div>
+			{{/each}}
+		{{else}}
+			<p>Belum ada sejarah pembelian. Silahkan pesan paket yang Anda inginkan pada <a href="/" class="badge badge-info">Menu URT</a></p>
+		{{/if}}
+		
+	</div>
+</div>

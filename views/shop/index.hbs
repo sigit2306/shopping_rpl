@@ -1,0 +1,29 @@
+<h1 class="text-center text-muted">USAHA RUMAH TANGGA</h1>
+<br>
+<div class="row">
+	<div class="col">
+		<div id="success" class="alert alert-success" {{#if noMessage}}hidden{{/if}}>
+			{{ successMsg }}
+		</div>
+	</div>
+</div>
+
+{{# each products }}
+	<div class="row" style="">
+		{{#each this}}
+			<div class="col">
+				<div class="card container" style="width: 18rem; margin: 5px 0px 5px 0px;">
+				  <img class="card-img-top" src="{{ this.imagePath }}" alt="" style="height: 10rem;">
+				  <div class="card-body">
+				    <h5 class="card-title">{{ this.title }}</h5>
+				    <p class="card-text text-muted">{{ this.description }}</p>
+				    <p class="font-weight-bold">Rp. {{{foo this.price}}}</p>
+				    <a href="/add-to-cart/{{this._id}}" class="btn btn-success">Tambah ke keranjang</a>
+				  </div>
+				</div>
+			</div>
+		{{/each}}
+	</div>	
+{{/each}}
+
+{{> footer }}

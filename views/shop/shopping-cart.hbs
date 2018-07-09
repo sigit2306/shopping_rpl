@@ -1,0 +1,41 @@
+{{# if products }}
+	<div class="row">
+		<div class="col">
+			<ul class="list-group">
+				{{# each products }}
+				<li class="list-group-item">
+					<span class="badge badge-primary">{{this.qty}}</span>
+					<strong>{{ this.item.title}}</strong>
+					<span class="badge badge-success">Rp. {{{foo this.price}}}</span> &nbsp;
+					<div class="btn-group">
+						<a class="badge badge-info nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tindakan</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/reduce/{{this.item._id}}">Kurangi 1</a>
+							<a class="dropdown-item" href="/remove/{{this.item._id}}">Hapus Semua</a>
+						</div>
+					</div>
+				</li>
+				{{/each}}
+			</ul>
+		</div>
+	</div>	
+	<div class="row">
+		<div class="col">
+			<strong>Total Rp. {{ totalPrice }}</strong>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col">
+			<a href="/checkout" class="btn btn-success" type="button">Konfirmasi Pesanan</a>
+		</div>
+	</div>
+{{ else }}
+	<div class="row">
+		<div class="col">
+			<h1 class="text-center text-muted">Keranjang Belanja Kosong!</h1>
+			<br>
+			<p>Belum ada pembelian. Silahkan pesan paket yang Anda inginkan pada <a href="/" class="badge badge-info">Menu URT</a></p>
+		</div>
+	</div>
+{{/if}}

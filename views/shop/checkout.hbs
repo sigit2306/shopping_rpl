@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col">
+        <h1 class="text-center text-muted">Konfirmasi Pesanan</h1>
+        <h4 class="text-monospace">Total Tagihan: Rp. {{total}}</h4>
+        <div id="charge-error" class="alert alert-danger" {{#if noError}}hidden{{/if}}>
+            {{errMsg}}
+        </div>
+        <form action="/checkout" method="post" id="checkout-form">
+            <h3>Penerima</h3>
+            <div class="col">
+                <div class="form-group">
+                    <label for="name">Nama Penerima</label>
+                    <input type="text" id="name" class="form-control" required name="name">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="address">Alamat Penerima</label>
+                    <input type="text" id="address" class="form-control" required name="address">
+                </div>
+            </div>
+            <hr>
+            <h3>Pembayaran</h3>
+            <div class="col">
+                <div class="form-group">
+                    <label for="card-name">Nama Pemilik Kartu</label>
+                    <input type="text" id="card-name" class="form-control" required>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="card-number">Nomor Kartu Kredit</label>
+                    <input type="text" id="card-number" class="form-control" required>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="card-expiry-month">Bulan Kadaluarsa</label>
+                            <input type="text" id="card-expiry-month" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="card-expiry-year">Tahun Kadaluarsa</label>
+                            <input type="text" id="card-expiry-year" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="card-cvc">CVC</label>
+                    <input type="text" id="card-cvc" class="form-control" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Bayar</button>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript" src="javascripts/checkout.js"></script>
