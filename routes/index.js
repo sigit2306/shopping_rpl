@@ -77,13 +77,14 @@ router.post('/checkout', isLoggedIn, function (req, res, next) {
   }
   var cart = new Cart(req.session.cart);
 
-  // stripe section
-  var keys = require('./config/keys');
+  // stripe section - secret
+  /*
+  var keys = require('../config/keys');
   var stripe = require("stripe")(keys.stripeSecretKey);
-  /* 
-    or exposed:
-    var stripe = require("stripe")("sk_test_x0tJzpxmIT9wMYYU04IG6srG");
   */
+    //or exposed:
+    var stripe = require("stripe")("sk_test_x0tJzpxmIT9wMYYU04IG6srG");
+  
 
   stripe.charges.create({
     amount: cart.totalPrice * 100,
